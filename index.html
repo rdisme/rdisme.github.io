@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hello, World</title>
+</head>
+
+<body>
+</body>
+
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=xAtk4oOhkO61DzzGU2ros3CsGiu01GYU"></script>
+<script type="text/javascript">
+    // 浏览器定位
+    // var geolocation = new BMap.Geolocation();
+    // geolocation.getCurrentPosition(function (r) {
+    //     if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+    //         console.log(r)
+    //         let addr = r.address
+    //         alert('浏览器定位-您的位置：' + addr.province + ',' + addr.city + ',' + addr.district + ',' + addr.street + ',' +
+    //             addr.street_number);
+    //     } else {
+    //         alert('failed' + this.getStatus());
+    //     }
+    // });
+
+
+    // IP定位
+    // var map = new BMap.Map("allmap");
+    // var point = new BMap.Point(116.331398, 39.897445);
+    // map.centerAndZoom(point, 12);
+
+    // function myFun(result) {
+    //     var cityName = result.name;
+    //     map.setCenter(cityName);
+    //     alert("当前定位城市:" + cityName);
+    // }
+    // var myCity = new BMap.LocalCity();
+    // myCity.get(myFun);
+
+
+    // 定位SDK辅助定位
+    var geolocation = new BMap.Geolocation();
+    // 开启SDK辅助定位
+    geolocation.enableSDKLocation();
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            console.log(r)
+            let addr = r.address
+            alert('sdk定位-您的位置：' + addr.province + ',' + addr.city + ',' + addr.district + ',' + addr.street + ',' +
+                addr.street_number);
+        } else {
+            alert('failed' + this.getStatus());
+        }
+    });
+</script>
+
+</html>
